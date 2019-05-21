@@ -1,0 +1,13 @@
+server:
+  port: 8012
+spring:
+  application:
+    name: microservice-consumer-movie
+
+#使用RestTemplate，不需要注册到eureka
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true

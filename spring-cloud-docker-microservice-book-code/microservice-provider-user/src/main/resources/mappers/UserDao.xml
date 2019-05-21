@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itmuch.cloud.study.Dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.itmuch.cloud.study.entity.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <select id="findOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+      id,username,age,name
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="search"  resultMap="BaseResultMap">
+    select
+     id,username,age,name
+    from user
+    where username = #{username,jdbcType=VARCHAR}
+    and name= #{name,jdbcType=VARCHAR}
+    and age= #{age,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="getUserList"  resultMap="BaseResultMap">
+    select
+     id,username,age,name
+    from user
+    where age= #{age,jdbcType=INTEGER}
+  </select>
+
+  <select id="testPostRestTemplate"  resultMap="BaseResultMap">
+    select
+     id,username,age,name,address
+    from user
+    where 1=1
+    and age= #{age,jdbcType=INTEGER}
+    and name=#{name,jdbcType=VARCHAR}
+    and address=#{address,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+</mapper>

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.itmuch.cloud.study.user.entity.User;
 import com.itmuch.cloud.study.user.util.RestTemplateUtil;
 import org.junit.Test;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -44,6 +45,26 @@ public class ResttemplateApplicationTests {
         RestTemplate restTemplate = RestTemplateUtil.getInstance("utf-8");
         String url = "http://localhost:8011/json";
         String result = restTemplate.postForObject(url, json, String.class);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testGet() {
+        RestTemplate restTemplate = RestTemplateUtil.getInstance("utf-8");
+        String url = "http://localhost:8012/testPost?username=刘备&name=CTO&age=18";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "text/xml; charset=utf-8");
+        String result= restTemplate.getForObject(url,String.class,headers);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testPost() {
+        RestTemplate restTemplate = RestTemplateUtil.getInstance("utf-8");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "text/xml; charset=utf-8");
+        String url = "http://localhost:8012/testPost?username=刘备&name=CTO&age=18";
+        String result= restTemplate.postForObject(url,headers,String.class);
         System.out.println(result);
     }
 }

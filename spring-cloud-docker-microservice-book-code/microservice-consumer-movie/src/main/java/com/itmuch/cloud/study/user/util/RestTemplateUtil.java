@@ -2,7 +2,6 @@ package com.itmuch.cloud.study.user.util;
 
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
 import java.nio.charset.Charset;
 
 public class RestTemplateUtil {
